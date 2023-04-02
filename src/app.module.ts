@@ -17,7 +17,7 @@ import { User } from "./user/entities/user.entity";
       entities: [User],
       autoLoadEntities: true,
       logging: true,
-      migrations: ["src/migration/*.js"],
+      synchronize: true,
     }),
     UserModule,
   ],

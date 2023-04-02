@@ -11,6 +11,20 @@ export class User {
   @Column()
   email: string;
 
+  @Column()
+  password: string;
+
+  @Column({
+    nullable: true,
+    default: null,
+  })
+  currentToken: string | null;
+
+  @Column({
+    default: () => "CURRENT_TIMESTAMP",
+  })
+  updatedAt: Date;
+
   @Column({
     default: () => "CURRENT_TIMESTAMP",
   })
