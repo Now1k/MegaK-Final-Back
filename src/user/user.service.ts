@@ -24,7 +24,7 @@ export class UserService {
     const newUser = new User();
     newUser.name = userToRegister.name;
     newUser.email = userToRegister.email;
-    newUser.password = await hashPwd(userToRegister.password);
+    newUser.password = hashPwd(userToRegister.password);
     await this.usersRepository.save(newUser);
     return this.filter(newUser);
   }
@@ -52,7 +52,8 @@ export class UserService {
       .getOne();
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
+  async update(id
+                 : string, updateUserDto: UpdateUserDto) {
     await this.usersRepository
       .createQueryBuilder()
       .update("user")

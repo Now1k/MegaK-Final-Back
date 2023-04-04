@@ -42,6 +42,24 @@ export class AuthService {
     }
   }
 
+  async logout(user: User, res: Response) {
+    try {
+      user.currentToken = null;
+      await this.userService.update(user.id, {
+        currentToken: user.currentToken,
+      });
+      res.clearCookie("jwt", {
+        secure: false,
+        domain: "localhost",
+        httpOnly: true,
+      });
+
+      return res.json({ loggedOut: true });
+    } catch (e) {
+      return res.json({ error: e.message });
+    }
+  }
+
   private createToken(currentToken: string): {
     accessToken: string;
     expiresIn: number;
