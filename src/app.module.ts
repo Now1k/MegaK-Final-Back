@@ -10,12 +10,12 @@ import { CarsModule } from "./cars/cars.module";
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: "mysql",
-      host: "localhost",
+      type: 'mysql',
+      host: 'localhost',
       port: 3306,
-      username: "root",
-      password: "",
-      database: "megak_final_car_manager",
+      username: 'root',
+      password: '',
+      database: 'megak_final_car_manager',
       entities: [User],
       autoLoadEntities: true,
       logging: true,

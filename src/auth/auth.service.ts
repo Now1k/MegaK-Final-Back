@@ -20,15 +20,15 @@ export class AuthService {
       });
 
       if (!user) {
-        return res.json({ error: "Invalid login data!" });
+        return res.json({ error: 'Invalid login data!' });
       }
 
       const token = await this.createToken(await this.generateToken(user));
 
       return res
-        .cookie("jwt", token.accessToken, {
+        .cookie('jwt', token.accessToken, {
           secure: false,
-          domain: "localhost",
+          domain: 'localhost',
           httpOnly: true,
         })
         .json({ ok: true });
@@ -43,9 +43,9 @@ export class AuthService {
       await this.userService.update(user.id, {
         currentToken: user.currentToken,
       });
-      res.clearCookie("jwt", {
+      res.clearCookie('jwt', {
         secure: false,
-        domain: "localhost",
+        domain: 'localhost',
         httpOnly: true,
       });
 
@@ -63,7 +63,7 @@ export class AuthService {
     const expiresIn = 60 * 60 * 24;
     const accessToken = sign(
       payload,
-      "bdfGRE%YtWT$#%yetr43T%Y$^URYj4t3%^Y^$Etrw435$Y^URYte534^UR%&TIKgye53^$URYIJewyreuyrJey536U$ERYt53y4u6rYIUKJey53u6$RYJtey53u64RYJtey53u46RYJey534U^IR&Yey53U^$RIYey53yu6$RYe35u64E35yu4^Re34265ue4^R35yu46riUeyw435u46R",
+      'bdfGRE%YtWT$#%yetr43T%Y$^URYj4t3%^Y^$Etrw435$Y^URYte534^UR%&TIKgye53^$URYIJewyreuyrJey536U$ERYt53y4u6rYIUKJey53u6$RYJtey53u64RYJtey53u46RYJey534U^IR&Yey53U^$RIYey53yu6$RYe35u64E35yu4^Re34265ue4^R35yu46riUeyw435u46R',
       {
         expiresIn,
       },

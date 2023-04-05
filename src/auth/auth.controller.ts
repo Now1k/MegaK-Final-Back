@@ -6,11 +6,11 @@ import { AuthGuard } from "@nestjs/passport";
 import { UserObj } from "../decorators/user-obj.decorator";
 import { User } from "../user/entities/user.entity";
 
-@Controller("auth")
+@Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post("/login")
+  @Post('/login')
   async phoneRegister(
     @Body() req: AuthLoginDto,
     @Res() res: Response,
@@ -18,8 +18,8 @@ export class AuthController {
     return this.authService.login(req, res);
   }
 
-  @Get("logout")
-  @UseGuards(AuthGuard("jwt"))
+  @Get('logout')
+  @UseGuards(AuthGuard('jwt'))
   async logout(@UserObj() user: User, @Res() res: Response) {
     return this.authService.logout(user, res);
   }

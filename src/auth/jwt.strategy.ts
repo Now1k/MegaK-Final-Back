@@ -17,13 +17,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: cookieExtractor,
       secretOrKey:
-        "bdfGRE%YtWT$#%yetr43T%Y$^URYj4t3%^Y^$Etrw435$Y^URYte534^UR%&TIKgye53^$URYIJewyreuyrJey536U$ERYt53y4u6rYIUKJey53u6$RYJtey53u64RYJtey53u46RYJey534U^IR&Yey53U^$RIYey53yu6$RYe35u64E35yu4^Re34265ue4^R35yu46riUeyw435u46R",
+        'bdfGRE%YtWT$#%yetr43T%Y$^URYj4t3%^Y^$Etrw435$Y^URYte534^UR%&TIKgye53^$URYIJewyreuyrJey536U$ERYt53y4u6rYIUKJey53u6$RYJtey53u64RYJtey53u46RYJey534U^IR&Yey53U^$RIYey53yu6$RYe35u64E35yu4^Re34265ue4^R35yu46riUeyw435u46R',
     });
   }
 
   async validate(payload: JwtPayload, done: (error, user) => void) {
     if (!payload || !payload.id) {
-      return done(new UnauthorizedException("Nie ma tokena"), false);
+      return done(new UnauthorizedException('Nie ma tokena'), false);
     }
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -33,7 +33,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
 
     if (!user) {
-      return done(new UnauthorizedException("Nie znalazł użytkownika"), false);
+      return done(new UnauthorizedException('Nie znalazł użytkownika'), false);
     }
     done(null, user);
   }

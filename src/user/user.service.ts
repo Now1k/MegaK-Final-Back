@@ -38,25 +38,25 @@ export class UserService {
 
   async findByToken(loginToken: string | object) {
     return await this.usersRepository
-      .createQueryBuilder("user")
-      .where("user.currentToken = :loginToken", { loginToken })
+      .createQueryBuilder('user')
+      .where('user.currentToken = :loginToken', { loginToken })
       .getOne();
   }
 
   async loginFind({ email, pwd }) {
     return await this.usersRepository
-      .createQueryBuilder("user")
-      .where("user.email = :email", { email })
-      .andWhere("user.password = :password", { password: pwd })
+      .createQueryBuilder('user')
+      .where('user.email = :email', { email })
+      .andWhere('user.password = :password', { password: pwd })
       .getOne();
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     await this.usersRepository
       .createQueryBuilder()
-      .update("user")
+      .update('user')
       .set(updateUserDto)
-      .where("id = :id", { id })
+      .where('id = :id', { id })
       .execute();
   }
 
