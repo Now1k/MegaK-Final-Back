@@ -8,10 +8,14 @@ export class User {
   @Column({ length: 50 })
   name: string;
 
-  @Column()
+  @Column({
+    length: 75,
+  })
   email: string;
 
-  @Column()
+  @Column({
+    length: 16,
+  })
   password: string;
 
   @Column({

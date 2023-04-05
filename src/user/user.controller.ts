@@ -9,8 +9,7 @@ import { UserObj } from "../decorators/user-obj.decorator";
 
 @Controller("user")
 export class UserController {
-  constructor(private readonly userService: UserService) {
-  }
+  constructor(private readonly userService: UserService) {}
 
   @Post("register")
   register(
@@ -41,6 +40,7 @@ export class UserController {
   }
 
   @Delete("delete/:id")
+  @UseGuards(AuthGuard("jwt"))
   remove(@Param("id") id: string) {
     return this.userService.remove(id);
   }

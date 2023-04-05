@@ -5,6 +5,7 @@ import { UserModule } from "./user/user.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./user/entities/user.entity";
 import { AuthModule } from "./auth/auth.module";
+import { CarsModule } from "./cars/cars.module";
 
 @Module({
   imports: [
@@ -18,10 +19,12 @@ import { AuthModule } from "./auth/auth.module";
       entities: [User],
       autoLoadEntities: true,
       logging: true,
-      migrations: ["migrations"],
+      synchronize: true,
+      // migrations: ["migrations"],
     }),
     UserModule,
     AuthModule,
+    CarsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

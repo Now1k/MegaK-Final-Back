@@ -12,8 +12,7 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
-  ) {
-  }
+  ) {}
 
   filter(user: User): RegisterUserResponse {
     const { id, name, email } = user;

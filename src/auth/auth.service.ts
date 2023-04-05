@@ -10,8 +10,7 @@ import { v4 as uuid } from "uuid";
 
 @Injectable()
 export class AuthService {
-  constructor(private userService: UserService) {
-  }
+  constructor(private userService: UserService) {}
 
   async login(req: AuthLoginDto, res: Response): Promise<any> {
     try {
