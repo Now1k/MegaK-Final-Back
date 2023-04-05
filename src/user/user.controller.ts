@@ -18,10 +18,10 @@ export class UserController {
     return this.userService.register(userToRegister);
   }
 
-  @Get('all')
-  findAll() {
-    return this.userService.findAll();
-  }
+  // @Get('all')
+  // findAll() {
+  //   return this.userService.findAll();
+  // }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
