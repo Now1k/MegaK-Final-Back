@@ -29,4 +29,10 @@ export class User {
     default: () => "CURRENT_TIMESTAMP",
   })
   createdAt: Date;
+
+  @Column({
+    nullable: true,
+    default: null,
+  })
+  car_id: string | null;
 }

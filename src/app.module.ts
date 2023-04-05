@@ -18,7 +18,7 @@ import { AuthModule } from "./auth/auth.module";
       entities: [User],
       autoLoadEntities: true,
       logging: true,
-      synchronize: true,
+      migrations: ["migrations"],
     }),
     UserModule,
     AuthModule,
@@ -26,5 +26,4 @@ import { AuthModule } from "./auth/auth.module";
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-}
+export class AppModule {}
