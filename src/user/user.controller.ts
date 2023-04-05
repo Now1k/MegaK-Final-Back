@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { User } from "./entities/user.entity";
 import { UpdateUserDto } from "./dto/update-user.dto";
-import { RegisterUserResponse } from "../interfaces/user";
+import { RegisterUserResponse } from "../interfaces/user.interface";
 import { AuthGuard } from "@nestjs/passport";
 import { UserObj } from "../decorators/user-obj.decorator";
 

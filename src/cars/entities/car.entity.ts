@@ -15,9 +15,7 @@ export class Car {
   })
   model: string;
 
-  @Column({
-    length: 4,
-  })
+  @Column()
   year_of_production: number;
 
   @Column({
