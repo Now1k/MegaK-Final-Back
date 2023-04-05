@@ -52,8 +52,7 @@ export class UserService {
       .getOne();
   }
 
-  async update(id
-                 : string, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     await this.usersRepository
       .createQueryBuilder()
       .update("user")

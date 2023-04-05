@@ -7,14 +7,10 @@ import { JwtPayload } from "./jwt.strategy";
 import { sign } from "jsonwebtoken";
 import { User } from "../user/entities/user.entity";
 import { v4 as uuid } from "uuid";
-import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private userService: UserService,
-    private configService: ConfigService,
-  ) {
+  constructor(private userService: UserService) {
   }
 
   async login(req: AuthLoginDto, res: Response): Promise<any> {
@@ -66,9 +62,13 @@ export class AuthService {
   } {
     const payload: JwtPayload = { id: currentToken };
     const expiresIn = 60 * 60 * 24;
-    const accessToken = sign(payload, this.configService.get("SECRET_OR_KEY"), {
-      expiresIn,
-    });
+    const accessToken = sign(
+      payload,
+      "bdfGRE%YtWT$#%yetr43T%Y$^URYj4t3%^Y^$Etrw435$Y^URYte534^UR%&TIKgye53^$URYIJewyreuyrJey536U$ERYt53y4u6rYIUKJey53u6$RYJtey53u64RYJtey53u46RYJey534U^IR&Yey53U^$RIYey53yu6$RYe35u64E35yu4^Re34265ue4^R35yu46riUeyw435u46R",
+      {
+        expiresIn,
+      },
+    );
 
     return {
       accessToken,
