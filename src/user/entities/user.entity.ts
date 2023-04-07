@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Car } from "src/cars/entities/car.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -34,9 +35,6 @@ export class User {
   })
   createdAt: Date;
 
-  @Column({
-    nullable: true,
-    default: null,
-  })
-  car_id: string | null;
+  @OneToMany(() => Car, (car) => car.user)
+  car: Car[];
 }

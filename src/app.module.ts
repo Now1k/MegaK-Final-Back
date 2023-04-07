@@ -6,6 +6,8 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./user/entities/user.entity";
 import { AuthModule } from "./auth/auth.module";
 import { CarsModule } from "./cars/cars.module";
+import { Car } from "./cars/entities/car.entity";
+import { CarEntry } from "./car-entry/entities/carEntry.entity";
 
 @Module({
   imports: [
@@ -16,7 +18,7 @@ import { CarsModule } from "./cars/cars.module";
       username: 'root',
       password: '',
       database: 'megak_final_car_manager',
-      entities: [User],
+      entities: [User, Car, CarEntry],
       autoLoadEntities: true,
       logging: true,
       synchronize: true,
