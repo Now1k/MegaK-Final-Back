@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "../../user/entities/user.entity";
 
 @Entity()
 export class Car {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  carId: string;
 
   @Column({
     length: 50,
@@ -28,6 +29,6 @@ export class Car {
   })
   updatedAt: Date;
 
-  @Column()
-  user_id: string;
+  @ManyToOne(() => User, (user) => user.cars)
+  user: User;
 }
