@@ -32,7 +32,7 @@ export class CarsService {
   }
 
   async findOne(id: string) {
-    return this.carsRepository.findOne({ where: { carId: id } });
+    return this.carsRepository.findOne({ where: { id } });
   }
 
   async update(id: string, updateCarDto: UpdateCarDto) {

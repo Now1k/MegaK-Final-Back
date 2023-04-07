@@ -15,8 +15,8 @@ export class UserService {
   ) {}
 
   filter(user: User): RegisterUserResponse {
-    const { userId, name, email } = user;
-    return { userId, name, email };
+    const { id, name, email } = user;
+    return { id, name, email };
   }
 
   async register(userToRegister: CreateUserDto): Promise<RegisterUserResponse> {
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   async findOne(id: string) {
-    return await this.usersRepository.findOne({ where: { userId: id } });
+    return await this.usersRepository.findOne({ where: { id } });
   }
 
   async findByToken(loginToken: string | object) {

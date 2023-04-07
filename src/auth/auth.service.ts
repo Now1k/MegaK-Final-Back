@@ -40,7 +40,7 @@ export class AuthService {
   async logout(user: User, res: Response) {
     try {
       user.currentToken = null;
-      await this.userService.update(user.userId, {
+      await this.userService.update(user.id, {
         currentToken: user.currentToken,
       });
       res.clearCookie('jwt', {
@@ -86,7 +86,7 @@ export class AuthService {
     } while (!!userWithThisToken);
 
     user.currentToken = token;
-    await this.userService.update(user.userId, {
+    await this.userService.update(user.id, {
       currentToken: user.currentToken,
     });
 

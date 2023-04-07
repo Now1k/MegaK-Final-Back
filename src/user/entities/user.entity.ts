@@ -1,10 +1,10 @@
+import { Car } from "src/cars/entities/car.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Car } from "../../cars/entities/car.entity";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  userId: string;
+  id: string;
 
   @Column({ length: 50 })
   name: string;
@@ -36,5 +36,5 @@ export class User {
   createdAt: Date;
 
   @OneToMany(() => Car, (car) => car.user)
-  cars: Car[];
+  car: Car[];
 }
