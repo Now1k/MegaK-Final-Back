@@ -12,7 +12,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('register')
-  register(
+  async register(
     @Body() userToRegister: CreateUserDto,
   ): Promise<RegisterUserResponse> {
     return this.userService.register(userToRegister);
@@ -24,13 +24,13 @@ export class UserController {
   // }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
   }
 
   @Patch('update/:id')
   @UseGuards(AuthGuard('jwt'))
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
     @UserObj() user: User,
@@ -41,7 +41,7 @@ export class UserController {
 
   @Delete('delete/:id')
   @UseGuards(AuthGuard('jwt'))
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.userService.remove(id);
   }
 }
