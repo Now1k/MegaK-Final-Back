@@ -32,14 +32,16 @@ export class UserService {
     return await this.usersRepository.find();
   }
 
-  async findOne(id: string) {
+  async findOne(id: string | object) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return await this.usersRepository.findOne({ where: { id } });
   }
 
-  async findByToken(loginToken: string | object) {
+  async findByToken(currentToken: string | object) {
     return await this.usersRepository
-      .createQueryBuilder('user')
-      .where('user.currentToken = :loginToken', { loginToken })
+      .createQueryBuilder()
+      .where('user.currentToken = :currentToken', { currentToken })
       .getOne();
   }
 
@@ -61,7 +63,9 @@ export class UserService {
   }
 
   async remove(id: string) {
-    await this.usersRepository.delete(id);
-    return `User with id:${id} has been removed from database`;
+    this.usersRepository.delete(id);
+    return console.log(
+      `user ${'c5345328-8e60-4819-918c-3bac5f15ce8e'} was deleted.`,
+    );
   }
 }
