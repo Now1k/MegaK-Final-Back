@@ -12,27 +12,22 @@ export class CarsService {
     private carsRepository: Repository<Car>,
   ) {}
 
-  async addCar(createCarDto: AddCarDto) {
-    return await this.carsRepository
-      .createQueryBuilder()
-      .insert()
-      .into(Car)
-      .values([
-        {
-          brand: createCarDto.brand,
-          model: createCarDto.model,
-          year_of_production: createCarDto.year_of_production,
-        },
-      ])
-      .execute();
+  async addCar(userId: string, createCarDto: AddCarDto) {
+    const newCar = new Car();
+    newCar.brand = createCarDto.brand;
+    newCar.model = createCarDto.model;
+    newCar.year_of_production = createCarDto.year_of_production;
+    newCar.user = userId;
+    await this.carsRepository.save(newCar);
+    return newCar;
   }
 
   async findAll() {
     return await this.carsRepository.find();
   }
 
-  async findOne(id: string) {
-    return this.carsRepository.findOne({ where: { id } });
+  async findOne(carId: string) {
+    return this.carsRepository.findOne({ where: { id: carId } });
   }
 
   async update(id: string, updateCarDto: UpdateCarDto) {
@@ -44,8 +39,8 @@ export class CarsService {
       .execute();
   }
 
-  async remove(id: string) {
-    await this.carsRepository.delete(id);
-    return `Car of id ${id} was deleted`;
+  async remove(carId: string) {
+    await this.carsRepository.delete(carId);
+    return `Car of id ${carId} was deleted`;
   }
 }

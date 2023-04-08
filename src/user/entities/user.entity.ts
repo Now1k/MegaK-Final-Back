@@ -1,5 +1,5 @@
 import { Car } from "src/cars/entities/car.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -25,14 +25,10 @@ export class User {
   })
   currentToken: string | null;
 
-  @Column({
-    default: () => 'CURRENT_TIMESTAMP',
-  })
+  @UpdateDateColumn()
   updatedAt: Date;
 
-  @Column({
-    default: () => 'CURRENT_TIMESTAMP',
-  })
+  @CreateDateColumn()
   createdAt: Date;
 
   @OneToMany(() => Car, (car) => car.user)

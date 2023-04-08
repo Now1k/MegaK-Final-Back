@@ -35,7 +35,7 @@ export class Car {
   updatedAt: Date;
 
   @ManyToOne(() => User, (user) => user.car)
-  user: User;
+  user: string;
 
   @OneToMany(() => CarEntry, (entry) => entry.car)
   entry: CarEntry[];
