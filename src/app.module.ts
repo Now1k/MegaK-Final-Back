@@ -8,6 +8,7 @@ import { AuthModule } from "./auth/auth.module";
 import { CarsModule } from "./cars/cars.module";
 import { Car } from "./cars/entities/car.entity";
 import { CarEntry } from "./car-entry/entities/carEntry.entity";
+import { CarEntryModule } from "./car-entry/car-entry.module";
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { CarEntry } from "./car-entry/entities/carEntry.entity";
     UserModule,
     AuthModule,
     CarsModule,
+    CarEntryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

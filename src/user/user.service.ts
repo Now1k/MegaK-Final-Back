@@ -3,7 +3,7 @@ import { CreateUserDto } from "./dto/create-user.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./entities/user.entity";
 import { UpdateUserDto } from "./dto/update-user.dto";
-import { RegisterUserResponse } from "../interfaces/user.interface";
+import { RegisterUserResponse } from "../types/user/user.interface";
 import { Repository } from "typeorm";
 import { hashPwd } from "../utils/hash-pwd";
 
