@@ -35,13 +35,12 @@ export class UserController {
     @Body() updateUserDto: UpdateUserDto,
     @UserObj() user: User,
   ) {
-    console.log(user);
     return this.userService.update(id, updateUserDto);
   }
 
   @Delete('delete/:id')
   @UseGuards(AuthGuard('jwt'))
-  async remove(@Param('id') id: string) {
+  async remove(@UserObj() user: User, @Param('id') id: string) {
     return this.userService.remove(id);
   }
 }

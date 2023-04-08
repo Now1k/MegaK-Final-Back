@@ -28,9 +28,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const user = await this.userService.findOne({
-      currentToken: payload.id,
-    });
+    const user = await this.userService.findByToken(`${payload.id}`);
+
+    console.log(user);
 
     if (!user) {
       return done(new UnauthorizedException('Nie znalazł użytkownika'), false);
