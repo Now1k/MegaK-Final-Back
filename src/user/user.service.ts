@@ -25,6 +25,7 @@ export class UserService {
     newUser.email = userToRegister.email;
     newUser.password = hashPwd(userToRegister.password);
     await this.usersRepository.save(newUser);
+
     return this.filter(newUser);
   }
 
